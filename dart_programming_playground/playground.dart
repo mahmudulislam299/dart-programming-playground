@@ -10,12 +10,21 @@ void main() {
   variable_func();
   // inputOutput_func();
   dataType_func();
+  string_func();
+  constVariable_func();
 }
 
 void variable_func() {
   var firstName = 'Mahmudul';
   String lastName = 'Islam';
   print(firstName + ' ' + lastName);
+
+  /*
+  if variable not assigned any value
+  it will contain null
+  */
+  // int num;
+  // print(num);
 }
 
 void inputOutput_func() {
@@ -48,4 +57,77 @@ void dataType_func() {
   print('weak var1 $weakVar');
   weakVar = 'dart programming';
   print('weakVar 2: $weakVar');
+}
+
+void string_func() {
+  var s1 = 'Single quote works well';
+  var s2 = "Double quote works";
+  var s3 = 'it\'s my name';
+  var s4 = "it's my name";
+
+  print(s1);
+  print(s2);
+
+  print(s3);
+  print(s4);
+
+  //Raw String
+  var s = r'In a raw string, not even \n gets special treatment';
+  print(s);
+
+  /*
+  String interpolation
+  */
+  var age = 25;
+  var str = "my age is $age";
+  print(str);
+
+  /*
+  multi-line string
+  */
+
+  var muls1 = '''
+you can create
+multi-line string like this one.
+''';
+  var muls2 = """This is also
+  a multi-line string.""";
+
+  print(muls1);
+  print(muls2);
+}
+
+void typeConversion_func() {
+// String -> int
+  var one = int.parse('1');
+  assert(one == 1); //to verify value; if its not true it will show error
+
+  // String -> double
+  var onePointone = double.parse('s1.1jj');
+  assert(onePointone == 1.1); // to verify value. if not true it will show error
+
+  // int -> String
+  String oneAsString = 1.toString(); // here 1 is also a object
+  assert(oneAsString == '1');
+
+  // double -> String
+  String piAsString = 3.1416.toStringAsFixed(2); //show two digit after point
+  assert(piAsString == '3.14');
+}
+
+void constVariable_func() {
+  /*
+  during runtime the variable value wont change
+  */
+  const aConstNum = 0; // int const
+  const aConstBool = true; // bool const
+  const aConstString = 'a const string'; // string const
+
+  print(aConstNum);
+  print(aConstBool);
+  print(aConstString);
+
+  print(aConstNum.runtimeType);
+  print(aConstBool.runtimeType);
+  print(aConstString.runtimeType);
 }
