@@ -12,6 +12,11 @@ void main() {
   dataType_func();
   string_func();
   constVariable_func();
+  operator_func();
+  null_aware_operator_func();
+  typeTest_func();
+  conditional_func();
+  loop_func();
 }
 
 void variable_func() {
@@ -130,4 +135,142 @@ void constVariable_func() {
   print(aConstNum.runtimeType);
   print(aConstBool.runtimeType);
   print(aConstString.runtimeType);
+}
+
+void operator_func() {
+  int num = 10 + 20;
+  num = num - 2;
+  print(num);
+
+  num = num % 5;
+  print(num);
+
+  // relational ==, !=, >=, <=
+  if (num == 0) {
+    print('zero');
+  }
+
+  num = 100;
+  num += 2;
+  print(num);
+
+  // unary operator
+  ++num;
+  num++;
+  num += 1;
+  num -= 1;
+  print(num);
+
+  // logical && and logical ||
+  if (num > 200 && num < 203) {
+    print('200 to 203');
+  }
+
+  // != not equal
+  if (num != 100) {
+    print('num is not equal to 100');
+  }
+
+  // ternary operator
+  int x = 100;
+  var result = x % 2 == 0 ? 'Even' : 'Odd';
+  print(result);
+}
+
+class Num {
+  int num = 10;
+}
+
+void null_aware_operator_func() {
+  // var n = Num(); //n is object of Num class.class object is called in this way
+  var n;
+  var number;
+
+  if (n != null) {
+    number = n.num;
+  }
+
+  // another simple way to null aware is
+  number = n?.num ?? 5;
+  print(number);
+
+  // (??=) if the variable is null then it will assigned to default value
+  // var number2 = 5;
+  var number2;
+  print(number2 ??= 100);
+  print(number2);
+}
+
+void typeTest_func() {
+  var x = 100.1;
+  if (x is int) {
+    print('integer');
+  } else if (x is double) {
+    print('double');
+  }
+}
+
+void conditional_func() {
+  int number = 0;
+  switch (number) {
+    case 0:
+      print('zero');
+      break;
+    case 1:
+      print('odd');
+      break;
+    case 2:
+      print('even');
+      break;
+    default:
+      print('confused');
+      break;
+  }
+}
+
+void printNum(num) {
+  print(num);
+}
+
+void loop_func() {
+  //standard  for loop
+  for (var i = 1; i <= 3; ++i) {
+    print(i);
+  }
+  print('');
+
+  // for-in loop
+  var numbers = [1, 2, 3]; // this is array
+
+  for (var n in numbers) {
+    print(n);
+  }
+  print('');
+
+  // another way
+  for (var i = 0; i < numbers.length; i++) {
+    print(numbers[i]);
+  }
+  print('');
+
+  //forEach loop
+  var numbers2 = [1, 2, 3];
+  numbers2.forEach((n) => print(n)); // (n) => print(n) this arrow function
+
+  // another way without arrow function
+  numbers2.forEach(printNum);
+  print('');
+
+  // while loop
+  int num = 3;
+  while (num > 0) {
+    print(num);
+    num -= 1;
+  }
+
+  // do while loop
+  do {
+    print(num);
+    num -= 1;
+  } while (num > 0);
 }
