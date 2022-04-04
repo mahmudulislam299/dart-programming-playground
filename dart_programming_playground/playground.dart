@@ -17,6 +17,10 @@ void main() {
   typeTest_func();
   conditional_func();
   loop_func();
+  list_func();
+  set_func();
+  map_func();
+  function_func();
 }
 
 void variable_func() {
@@ -273,4 +277,128 @@ void loop_func() {
     print(num);
     num -= 1;
   } while (num > 0);
+}
+
+void list_func() {
+// List jst like array
+  List names = ['jack', 'jill'];
+  print(names[0]);
+  print(names.length);
+
+  for (var n in names) {
+    print(n);
+  }
+
+  // hold different type of data such as string, int, double
+  var names2 = ['jack', 1.1, 18, "jill"];
+  for (var n in names2) {
+    print(n);
+  }
+
+  // hold only string type of data
+  List<String> names3 = ['mahmud', 'robince'];
+  for (var n in names3) {
+    print(n);
+  }
+
+  List<int> intList = [1, 2, 3];
+  for (var n in intList) {
+    print(n);
+  }
+
+  // List value changed
+  List<String> names4 = ['shakil', 'himel', 'rishan'];
+  names4[1] = 'reefat';
+  for (var n in names4) {
+    print(n);
+  }
+
+  // List value can not be changed
+  List<String> names5 = const ['hello', 'dart'];
+  // names5[2] = 'python'; this is not possible
+
+  //**************************************************************************//
+  //**************************************************************************//
+
+  // very important example
+  List<String> names6 = ['jack', 'jill'];
+  var names7 = names6;
+  names6[1] = 'humptydumty';
+  for (var n in names7) {
+    print(n);
+  }
+
+  /* 
+  important note: names7 value is also changed.
+  bcoz names7 is not copying names6.
+  its actually pointing to names6.
+  */
+
+  List<String> names8 = ['jack', 'jill'];
+  var names9 = [...names8]; // this operator used in javascript
+  // names9 value is copying in names8
+
+  names8[1] = 'humpty-dumpty';
+
+  for (var n in names9) {
+    print(n);
+  }
+  // names9 is copying names8, not pointing
+  // so value is not changed.
+}
+
+void set_func() {
+  // Set is an unordered collection of unique items
+
+  var halogens = {'flourine', 'chlorine', 'flourine'};
+
+  for (var x in halogens) {
+    print(x);
+  }
+  // flourine is printed single time here
+
+  var s1 = {};
+  print(s1.runtimeType); //_InternalLinkedHashMap
+
+  var s2 = <String>{};
+  print(s2.runtimeType); // _CompactLinkedHashSet
+}
+
+void map_func() {
+  // map
+  // map is collection of key value pair of items in some programming language
+  // in python it is called dictionary
+
+  var gifts = {
+    // key: value
+    'first': 'chocolate',
+    'second': 'flower',
+    'fifth': 'ring'
+  };
+
+  print(gifts['fifth']);
+
+  var gifts2 = {
+    // key: value
+    5: 'chocolate',
+    2: 'flower',
+    7: 'ring'
+  };
+
+  print(gifts2[7]);
+
+  // defining empty map
+  var gifts3 = Map(); // this is empty map
+
+  // inserting key value pair in gifts
+  gifts3['first'] = 'mango';
+  print(gifts3['first']);
+
+  // another way to input
+  gifts3 = {'third': 'grape', 'second': 'banana'};
+  print(gifts3['second']);
+}
+
+void function_func() {
+  int i;
 }
