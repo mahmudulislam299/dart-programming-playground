@@ -21,6 +21,8 @@ void main() {
   set_func();
   map_func();
   function_func();
+  function2_func();
+  exceptionHandling_func();
 }
 
 void variable_func() {
@@ -434,4 +436,85 @@ void function_func() {
 
   List fruits = ['apple', 'banana', 'jackfruit'];
   fruits.forEach(printF);
+  fruits.forEach((n) {
+    // this is anonymous func or nameless func
+    print(n);
+  });
+
+  // another example of nameless function:
+
+  List<int> intList = [1, 3, 5, 7];
+  intList.forEach((x) {
+    x = x * x * x;
+    print(x);
+  });
+}
+
+/* ---------------------------------------------------------------------------------*/
+/* there two types of parameters in function in the programming language like python
+  1. Positional parameter
+  2. Named parameter or named argumetn
+*/
+
+// here is positonal parameter example
+dynamic sum1(var num1, var num2) => num1 + num2;
+
+// named parameter example
+dynamic sum2({var num1, var num2}) => num1 + num2;
+
+// here num2 is optional
+dynamic sum3(var num1, {var num2}) => num1 + (num2 ?? 0); //num2 default val 0
+
+// another way
+dynamic sum4(var num1, {var num2 = 0}) => num1 + num2;
+
+// another way
+dynamic sum5(var num1, [var num2 = 0]) => num1 + num2;
+
+void function2_func() {
+  print(sum1(2, 2)); //positional parameter
+  print(sum2(num1: 2, num2: 2)); // named parameter
+  print(sum3(2));
+  print(sum4(2));
+  print(sum4(2, num2: 4));
+  print(sum5(2));
+  print(sum5(2, 2));
+}
+
+/* 
+  exception handling is feature if there is any runtime problem occured or not
+  keyword for exception handling:
+  1. throw
+  2. try
+  3. catch
+  4. finally
+  
+*/
+
+int mustGreaterThanZero(int val) {
+  if (val <= 0) {
+    throw Exception('value must be greater than zero');
+  }
+  return val;
+}
+
+void letVerifyTheValue(var val) {
+  var valueVerification;
+
+  try {
+    valueVerification = mustGreaterThanZero(val);
+  } catch (e) {
+    print(e);
+  } finally {
+    if (valueVerification == null) {
+      print('value is not accepted');
+    } else {
+      print('Value verfied: $valueVerification');
+    }
+  }
+}
+
+void exceptionHandling_func() {
+  letVerifyTheValue(10);
+  letVerifyTheValue(0);
 }
