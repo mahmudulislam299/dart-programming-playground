@@ -399,6 +399,39 @@ void map_func() {
   print(gifts3['second']);
 }
 
+/* ------------------------------   Function ---------------------------------*/
+
+//dynamic means this function return any type of variable list int, float, double etc
+dynamic square(var num) {
+  return num * num;
+}
+
+void showOutput(var num) {
+  print(num);
+}
+
+/* arrow function => make function small*/
+
+dynamic square2(var num) => num * num;
+// no need to write {} and return
+
+/* -------------------------------------------------------------------*/
+/* anonynous function:
+  a function that has no name
+  in python it is called lamda
+  in some other programming language it is called closer
+  */
+
+printF(var num) {
+  print(num);
+}
+
 void function_func() {
-  int i;
+  int digit = 5;
+  showOutput(square(digit));
+  showOutput(square(5.5));
+  showOutput(square2(5.5));
+
+  List fruits = ['apple', 'banana', 'jackfruit'];
+  fruits.forEach(printF);
 }
